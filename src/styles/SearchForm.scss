@@ -1,0 +1,35 @@
+.searchForm {
+    background: rgba(116, 86, 227, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+}
+
+input {
+    background-color: rgba(52, 37, 108, 0.19);
+    border: 0.5px solid aliceblue;
+    padding: 10px 20px;
+    width: 60%;
+    border-radius: 10px;
+    margin: 10px;
+    color: #fff;
+    outline: none;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    font-size: 35px;
+    cursor: pointer;
+}

@@ -1,19 +1,35 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import '../styles/chart.scss'
 
-const Chart = ({ data }) => {
-  const chartData = data.map(user => ({
-    name: user.login,
-    followers: user.followers,
-  }));
+// Register necessary Chart.js components
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
+const Chart = ({ users }) => {
+  const chartData = {
+    labels: users.map(user => user.login),
+    datasets: [
+      {
+        label: 'Seguidores',
+        data: users.map(user => user.followers || 0),
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+      },
+    ],
+  };
 
   return (
-    <BarChart width={600} height={300} data={chartData}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="followers" fill="#8884d8" />
-    </BarChart>
+    <div className='chart' style={{ width: '600px', height: '400px' }}>
+      {users.length > 0 && <Bar data={chartData} />}
+    </div>
   );
 };
 

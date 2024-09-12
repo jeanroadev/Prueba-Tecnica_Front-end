@@ -1,0 +1,13 @@
+.userList {
+    right: 10%;
+    top: 8%;
+}
+
+li {
+    list-style: none;
+}
+
+li::before {
+    content: 👽 ;
+}
+

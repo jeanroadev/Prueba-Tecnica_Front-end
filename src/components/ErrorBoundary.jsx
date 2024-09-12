@@ -1,14 +1,8 @@
-import { useState } from 'react';
+// ErrorBoundary.jsx
+import React from 'react';
 
-const ErrorBoundary = ({ children }) => {
-  const [error, setError] = useState(null);
-
-  return (
-    <div>
-      {error && <div className="error">{error}</div>}
-      {children({ setError })}
-    </div>
-  );
+const ErrorBoundary = ({ message }) => {
+  return <p style={{ color: 'red' }}>{message}</p>;
 };
 
 export default ErrorBoundary;

@@ -1,32 +1,34 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// SearchForm.jsx
+import React, { useState } from 'react';
+import '../styles/SearchForm.scss'
 
-const SearchForm = ({ setError }) => {
-  const [username, setUsername] = useState('');
-  const navigate = useNavigate();
+const SearchForm = ({ onSearch }) => {
+  const [search, setSearch] = useState('');
+  const [error, setError] = useState('');
 
   const handleSearch = () => {
-    if (username.length < 4) {
-      setError("El nombre debe tener al menos 4 caracteres.");
+    if (search.length < 4) {
+      setError('El término de búsqueda debe tener al menos 4 caracteres.');
       return;
     }
-    if (username.toLowerCase() === 'iseijasunow') {
-      setError("No se permite la búsqueda de este usuario.");
+    if (search.toLowerCase() === 'iseijasunow') {
+      setError('No se permite la búsqueda de la palabra "iseijasunow".');
       return;
     }
-    setError(null);
-    navigate(`/users/${username}`);
+    setError('');
+    onSearch(search);
   };
 
   return (
-    <div className="search-form">
-      <input 
-        type="text" 
-        placeholder="Buscar usuario..."
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+    <div className='searchForm'>
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Buscar usuario en GitHub"
       />
-      <button onClick={handleSearch}>Buscar</button>
+      <button onClick={handleSearch}>🔍</button>
+      {error && <p className='error'>{error}</p>}
     </div>
   );
 };

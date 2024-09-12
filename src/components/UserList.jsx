@@ -1,31 +1,19 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+// UserList.jsx
+import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/userlist.scss'
 
-const UserList = ({ query, setError }) => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get(`https://api.github.com/search/users?q=${query}`);
-        setUsers(response.data.items.slice(0, 500));  // Los primeros 10 usuarios
-      } catch (error) {
-        setError("Error al obtener los usuarios");
-      }
-    };
-
-    fetchUsers();
-  }, [query]);
-
+const UserList = ({ users }) => {
   return (
-    <div className="user-list">
-      {users.map(user => (
-        <div key={user.id} className="user-item">
-          <Link to={`/user/${user.login}`}>{user.login} - {user.id}</Link>
-        </div>
+    <ul className='userList'>
+      {users.map((user) => (
+        <li key={user.id}>
+          <Link to={`/user/${user.login}`}>
+            {user.login} (ID: {user.id})
+          </Link>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
