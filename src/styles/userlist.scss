@@ -1,13 +1,10 @@
-.userList {
-    right: 10%;
-    top: 8%;
-}
-
 li {
     list-style: none;
+    margin: 10px;
+    color: #000  !important;
 }
 
 li::before {
-    content: 👽 ;
+    content: '👽 ' !important;
 }
 

@@ -9,7 +9,7 @@ body {
     animation: gradient-animation 28s ease infinite;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     position: relative;
   }
 
@@ -20,7 +20,7 @@ body {
   }
 
   a {
-    color: #fff;
+    color: #000;
     text-decoration: underline;
   }
 
@@ -36,15 +36,47 @@ body {
     padding: 10px;
     z-index: 10; 
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: .9rem;
   }
 
   .results {
+    display: flex;
+    justify-content: center;
     width: 100%;
     background-color: linear-gradient(153deg,#ec3a37,#6b0030,#292bc0,#fad93b) !important;
-    margin: 20px 0;
-    width: 100%;
+    // margin: 20px 0;
   }
+
+  .chartContainer,
+.userlistContainer {
+  background: rgba(193, 197, 197, 0.924);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  max-height: 300px;
+  width: 100% !important;
+}
+
+.userlistContainer {
+  max-height:350px;
+}
+
+
+
+.userlistContainer ul{
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.hidden {
+  display: none;
+}
   
   
   @keyframes gradient-animation {

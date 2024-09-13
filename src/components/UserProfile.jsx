@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/userprofile.scss'
 
 const UserProfile = () => {
   const { login } = useParams();
@@ -31,7 +32,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div>
+    <div className='userProfile'>
       <button onClick={() => navigate(-1)}>⬅️</button>
       <h2>Perfil de {userData.login}</h2>
       <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} width="150" />

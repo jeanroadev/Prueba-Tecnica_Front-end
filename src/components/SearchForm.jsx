@@ -12,7 +12,12 @@ const SearchForm = ({ onSearch }) => {
       return;
     }
     if (search.toLowerCase() === 'iseijasunow') {
-      setError('No se permite la búsqueda de la palabra "iseijasunow".');
+      setError(<>
+        No se permite la búsqueda de la palabra "iseijasunow". Aquí tienes más{' '}
+        <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank' rel="noopener noreferrer">
+          información
+        </a>.
+      </>);
       return;
     }
     setError('');

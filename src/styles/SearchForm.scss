@@ -6,11 +6,11 @@
     -webkit-backdrop-filter: blur(8px);
     min-height: 200px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center !important;
+    align-items: center !important;
     flex-wrap: wrap;
     position: relative;
-    width: 100%;
+    width: 100% !important;
 }
 
 input {

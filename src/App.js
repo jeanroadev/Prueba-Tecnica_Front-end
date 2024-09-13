@@ -14,6 +14,7 @@ const App = () => {
   const [error, setError] = useState('');
   const location = useLocation();
   const isUserProfile = location.pathname.startsWith('/user/');
+  const isProfileRoute = location.pathname.includes('/user/');
 
 
   const handleSearch = async (search) => {
@@ -38,13 +39,20 @@ const App = () => {
       {!isUserProfile && <h1>Búsqueda de Usuarios en GitHub</h1>}
       {!isUserProfile && <SearchForm onSearch={handleSearch} />}
       {error && <ErrorBoundary message={error} />}
-      <div className='results' >
-        {!isUserProfile && <UserList users={users} />}
-        {!isUserProfile && <Chart users={users} />}
-      </div>
-      
+
+
+       {!isProfileRoute && (
+            <div className='results' >
+            <div className={`chartContainer ${users.length === 0 ? 'hidden' : ''}`}>
+              <Chart users={users} />
+            </div>
+            <div className={`userlistContainer ${users.length === 0 ? 'hidden' : ''}`}>
+              <UserList users={users}/>
+            </div>
+          </div>
+      )}
       <Routes>
-        <Route path="/user/:login" element={<UserProfile />} />
+        <Route path="/user/:login" target="_blank" element={<UserProfile />} />
       </Routes>
     </div>
   );
